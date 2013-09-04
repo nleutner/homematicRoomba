@@ -1,2 +1,2 @@
 # IP Adresse zum Roomba
-set ip <IP-Adress>
+set ip arnsberg8.dyndns.org:20010
