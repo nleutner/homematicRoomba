@@ -4,7 +4,7 @@
 load tclrega.so
 
 # include config
-source config.tcl
+source /usr/local/addons/homematicRoomba/config.tcl
 
 # Variablen:
 # Roomba-Batterie       Zahl
@@ -16,6 +16,7 @@ set f [open "/usr/local/addons/homematicRoomba/Roomba.xml"]
 set input [read $f]
 close $f
 
+set battery 0;
 regexp "<response>(.*?)</response>" $input dummy current  ; #get current state
 regexp "<r18>(.*?)</r18>" $current dummy charge  ; #get charge
 regexp "<r19>(.*?)</r19>" $current dummy capacity  ; #get capacity

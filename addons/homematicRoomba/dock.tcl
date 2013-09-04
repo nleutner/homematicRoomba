@@ -4,9 +4,9 @@
 load tclrega.so
 
 # include config
-source config.tcl
+source /usr/local/addons/homematicRoomba/config.tcl
 
-# Parameter für http://<IP>/rwr.cgi?exec=<Befehlt>
+# Parameter für http://<IP>/rwr.cgi?exec=<Befehl>
 # rwr.cgi?exec=h IDLE
 # rwr.cgi?exec=j Sauger
 # rwr.cgi?exec=k Dreher
@@ -26,8 +26,7 @@ source config.tcl
 # rwr.cgi?exec=c 45 Grad Links
 # rwr.cgi?exec=d 90 Grad links
 
-source lib/functions.tcl
-init
+source /usr/local/addons/homematicRoomba/lib/functions.tcl
 
 #DriverMode
 set url http://$ip/rwr.cgi?exec=h
