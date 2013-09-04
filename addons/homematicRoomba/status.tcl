@@ -1,14 +1,13 @@
- #!/bin/tclsh
+#!/bin/tclsh
 
- # load libaries
- load tclrega.so
+# load libaries
+load tclrega.so
 
 # include config
 source config.tcl
 
 # Variablen:
 # Roomba-Batterie       Zahl
-
 
 set url http://$ip/rwr.xml
 exec /usr/bin/wget -q -O /usr/local/addons/homematicRoomba/Roomba.xml $url
