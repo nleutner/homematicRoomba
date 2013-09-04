@@ -1,2 +1,2 @@
-# wundergroung API Key
-set ip 192.168.1.70
+# IP Adresse zum Roomba
+set ip <IP-Adress>
