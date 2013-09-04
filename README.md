@@ -1,7 +1,7 @@
 homematicRoomba
 ===============
 
-Roomba Implementation in die homematic. Entsprechende Hardware vorausgesetzt.
+Roomba Implementierung in die homematic. Entsprechende Hardware vorausgesetzt.
 http://www.roomba-wifi-remote.com/  WLAN-Modul
 http://www.irobot.com/              Roomba
 
