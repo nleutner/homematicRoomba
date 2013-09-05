@@ -1,7 +1,7 @@
 Roomba Implementierung in die homematic. Entsprechende Hardware vorausgesetzt.
 
-http://www.roomba-wifi-remote.com/  WLAN-Modul
-http://www.irobot.com/              Roomba
+*   http://www.roomba-wifi-remote.com/  WLAN-Modul
+*   http://www.irobot.com/              Roomba
 
 
 ####Benötigte Addons:
@@ -69,7 +69,8 @@ ip                        |IP-Adresse des Roomba                                
 
 
 ####clean.tcl
-Diese Programm startet den Roomba, es wird Clean für 5 Sekunden gestartet, damit er Rückwärts rausfährt. Dnach bekommt er den Befehl sich umzudrehehn und in eine Richtung zu fahren. Der Weg muss angepasst werden.
+Diese Programm startet den Roomba, es wird Clean für 5 Sekunden gestartet, damit er Rückwärts rausfährt. Mit einem weiteren Clean Befehl wird er gestoppt.
+Danach bekommt er den Befehl sich umzudrehen und in eine Richtung zu fahren. Der Weg muss im Script individuell angepasst werden.
 
 #####Systemvariabeln
  Name                     | Variablentyp| Werte|Maßeinheit
@@ -86,7 +87,7 @@ dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State("cd /usr/local/addons/homemati
 
 
 ####dock.tcl
-Dieses Programm startet die Dock Funktion
+Dieses Programm startet die Dock Funktion.
 
 
 #####Systemvariabeln
@@ -104,7 +105,7 @@ dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State("cd /usr/local/addons/homemati
 
 
 ####status.tcl
-Dieses Programm errechnet den aktuellen Batteriestand in Prozent
+Dieses Programm errechnet den aktuellen Batteriestand in Prozent.
 
 #####Systemvariabeln
  Name                     | Variablentyp| Werte|Maßeinheit
