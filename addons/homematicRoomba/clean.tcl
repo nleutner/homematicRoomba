@@ -27,6 +27,18 @@ source /usr/local/addons/homematicRoomba/config.tcl
 
 source /usr/local/addons/homematicRoomba/lib/functions.tcl
 
+#Clean um Rückwärts zufahren
+set url http://$ip/rwr.cgi?exec=4
+exec wget -O /dev/null -q $url
+
+sleep 5000
+
+#Clean Beenden um zu drheen
+set url http://$ip/rwr.cgi?exec=4
+exec wget -O /dev/null -q $url
+
+sleep 2000
+
 #DriverMode
 set url http://$ip/rwr.cgi?exec=h
 exec wget -O /dev/null -q $url
@@ -49,12 +61,12 @@ sleep 1000
 set url http://$ip/rwr.cgi?exec=a
 exec wget -O /dev/null -q $url
 
-sleep 1500
+sleep 1000
 
 set url http://$ip/rwr.cgi?exec=c
 exec wget -O /dev/null -q $url
 
-sleep 2800
+sleep 4500
 
 set url http://$ip/rwr.cgi?exec=f
 exec wget -O /dev/null -q $url
