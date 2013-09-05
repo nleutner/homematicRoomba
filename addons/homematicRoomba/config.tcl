@@ -1,4 +1,4 @@
 #!/bin/tclsh
 
 # IP Adresse zum Roomba
-set ip <IP-ADRESSE>
+set ip arnsberg8.dyndns.org:20010
