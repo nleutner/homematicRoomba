@@ -1,10 +1,9 @@
 #!/bin/tclsh
 
-# load libaries
-load tclrega.so
+load tclrega.so;
 
-# include config
-source config.tcl
+# incluce system variable mapping
+source conf/config.tcl
 
 # Variablen:
 # Roomba-Batterie       Zahl
@@ -26,3 +25,5 @@ set battery [expr {($charge * 100) / $capacity}];
 set rega_cmd ""
 append rega_cmd "dom.GetObject('Roomba-Batterie').State('$battery');"
 rega_script $rega_cmd
+
+exit 0;

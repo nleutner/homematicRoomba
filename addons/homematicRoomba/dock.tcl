@@ -1,10 +1,9 @@
 #!/bin/tclsh
 
-# load libaries
-load tclrega.so
+load tclrega.so;
 
-# include config
-source /usr/local/addons/homematicRoomba/config.tcl
+# incluce system variable mapping
+source conf/config.tcl
 
 # Parameter für http://<IP>/rwr.cgi?exec=<Befehl>
 # rwr.cgi?exec=h IDLE
@@ -37,3 +36,5 @@ sleep 2000
 #Dock
 set url http://$ip/rwr.cgi?exec=6
 exec wget -O /dev/null -q $url
+
+exit 0;
