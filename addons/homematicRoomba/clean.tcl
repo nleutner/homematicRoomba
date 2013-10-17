@@ -26,90 +26,92 @@ source conf/config.tcl
 
 source /usr/local/addons/homematicRoomba/lib/functions.tcl
 
-#Clean um Rückwärts zufahren
-set url http://$ip/rwr.cgi?exec=4
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
+if {[catch {exec ping -c 1 -s 1 $ip}] } then {
+
+    #Clean um Rückwärts zufahren
+    set url http://$ip/rwr.cgi?exec=4
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 5000
+
+    #Clean Beenden um zu drehen
+    set url http://$ip/rwr.cgi?exec=4
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 2000
+
+    #DriverMode
+    set url http://$ip/rwr.cgi?exec=h
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 2000
+
+    #90 Grad Drehung
+    set url http://$ip/rwr.cgi?exec=g
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 500
+
+    #90 Grad Drehung
+    set url http://$ip/rwr.cgi?exec=g
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 1000
+
+    #Vorwärts fahren
+    set url http://$ip/rwr.cgi?exec=a
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 1000
+
+    set url http://$ip/rwr.cgi?exec=c
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 4500
+
+    set url http://$ip/rwr.cgi?exec=f
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
+
+    sleep 8000
+
+    #Ende Vorwärts fahren
+    set url http://$ip/rwr.cgi?exec=a
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 0
+    }
+
+    sleep 500
+
+    #Beginne zu reinigen
+    set url http://$ip/rwr.cgi?exec=4
+    if { [catch {exec wget -O /dev/null -q $url} error] } {
+        puts stderr "Could not reach Roomba from $url \n$error"
+        exit 1
+    }
 }
-
-sleep 5000
-
-#Clean Beenden um zu drehen
-set url http://$ip/rwr.cgi?exec=4
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 2000
-
-#DriverMode
-set url http://$ip/rwr.cgi?exec=h
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 2000
-
-#90 Grad Drehung
-set url http://$ip/rwr.cgi?exec=g
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 500
-
-#90 Grad Drehung
-set url http://$ip/rwr.cgi?exec=g
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 1000
-
-#Vorwärts fahren
-set url http://$ip/rwr.cgi?exec=a
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 1000
-
-set url http://$ip/rwr.cgi?exec=c
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 4500
-
-set url http://$ip/rwr.cgi?exec=f
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
-sleep 8000
-
-#Ende Vorwärts fahren
-set url http://$ip/rwr.cgi?exec=a
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 0
-}
-
-sleep 500
-
-#Beginne zu reinigen
-set url http://$ip/rwr.cgi?exec=4
-if { [catch {exec wget -O /dev/null -q $url} error] } {
-    puts stderr "Could not reach Roomba from $url \n$error"
-    exit 1
-}
-
 exit 0;
