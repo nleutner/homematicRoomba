@@ -28,7 +28,7 @@ source lib/functions.tcl
 
 set iptmp $ip
 regexp "(.*?):" $ip dummy iptmp ;
-if {![catch {exec ping -c 1 -s 1 $iptmp}] } then {
+if {![catch {exec ping -c 1 -s 1 -w 1 $iptmp}] } then {
 
     #DriverMode
     set url http://$ip/rwr.cgi?exec=h
