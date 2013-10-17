@@ -2,8 +2,9 @@
 
 load tclrega.so;
 
-# incluce system variable mapping
+# include config
 source conf/config.tcl
+source lib/functions.tcl
 
 # rwr.cgi?exec=h IDLE
 # rwr.cgi?exec=j Sauger
@@ -24,9 +25,9 @@ source conf/config.tcl
 # rwr.cgi?exec=c 45 Grad Links
 # rwr.cgi?exec=d 90 Grad links
 
-source /usr/local/addons/homematicRoomba/lib/functions.tcl
-
-if {[catch {exec ping -c 1 -s 1 $ip}] } then {
+set iptmp $ip
+regexp "(.*?):" $ip dummy iptmp ;
+if {![catch {exec ping -c 1 -s 1 $iptmp}] } then {
 
     #Clean um Rückwärts zufahren
     set url http://$ip/rwr.cgi?exec=4

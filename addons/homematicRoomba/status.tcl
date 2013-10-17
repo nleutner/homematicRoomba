@@ -2,13 +2,15 @@
 
 load tclrega.so;
 
-# incluce system variable mapping
+# include config
 source conf/config.tcl
 
 # config
 set sysvar Roomba-Batterie
 
-if {[catch {exec ping -c 1 -s 1 $ip}] } then {
+set iptmp $ip
+regexp "(.*?):" $ip dummy iptmp ;
+if {![catch {exec ping -c 1 -s 1 $iptmp}] } then {
 
     set url http://$ip/rwr.xml
     if { [catch {exec /usr/bin/wget -q -O roomba.xml $url} error] } {
@@ -30,5 +32,6 @@ if {[catch {exec ping -c 1 -s 1 $ip}] } then {
     set rega_cmd ""
     append rega_cmd "dom.GetObject('$sysvar').State('$battery');"
     rega_script $rega_cmd
+    puts WURDEAKTUALISIERT
 }
 exit 0;
