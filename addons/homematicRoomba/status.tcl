@@ -9,7 +9,10 @@ source conf/config.tcl
 # Roomba-Batterie       Zahl
 
 set url http://$ip/rwr.xml
-exec /usr/bin/wget -q -O Roomba.xml $url
+if { [catch {exec /usr/bin/wget -q -O Roomba.xml $url} error] } {
+    puts stderr "Could not reach Roomba from $url \n$error"
+    exit 1
+}
 
 set f [open "Roomba.xml"]
 set input [read $f]

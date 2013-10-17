@@ -29,12 +29,18 @@ source /usr/local/addons/homematicRoomba/lib/functions.tcl
 
 #DriverMode
 set url http://$ip/rwr.cgi?exec=h
-exec wget -O /dev/null -q $url
+if { [catch {exec wget -O /dev/null -q $url} error] } {
+    puts stderr "Could not reach Roomba from $url \n$error"
+    exit 1
+}
 
 sleep 2000
 
 #Dock
 set url http://$ip/rwr.cgi?exec=6
-exec wget -O /dev/null -q $url
+if { [catch {exec wget -O /dev/null -q $url} error] } {
+    puts stderr "Could not reach Roomba from $url \n$error"
+    exit 1
+}
 
 exit 0;
